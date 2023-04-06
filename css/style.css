@@ -13,16 +13,16 @@ body {
   overflow: hidden;
 }
 .chat-header{
-  background-color: #f2f2f2;
   display:flex;
   align-items: center;
   padding: 10px;
-  background-color: #4385F5;
+  background-color: #2196f3;
 }
 .chat-name {
   display: inline;
   padding: 10px;
   font-weight: bold;
+  color: white;
 }
 
 .chat-history {
@@ -71,19 +71,24 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #4385F5;
+  background-color: #90caf9;
   color: white;
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
-  border-radius: 20px;
+  border-radius: 15px;
   width: 80px;
   height: 30px;
   margin-left: auto;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  padding:1.2px;
 }
 
 .connect-button:hover {
-  background-color: #3B7FED;
+  background-color: #2196f3;
+  border:solid;
+  border-width: 2px;
+  border-color: white;
+  cursor:pointer;
 }
