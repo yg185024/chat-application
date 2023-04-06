@@ -12,7 +12,10 @@ body {
   border-radius: 10px;
   overflow: hidden;
 }
-
+.chat-header{
+  background-color: #f2f2f2;
+  
+}
 .chat-name {
   display: inline;
   background-color: #f2f2f2;
