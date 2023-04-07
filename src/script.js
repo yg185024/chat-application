@@ -117,6 +117,8 @@ function sendMessage() {
   sentMessage.classList.add("sent-message");
   chatHistory.appendChild(sentMessage);
   messageInput.value = "";
+
+  console.log(`sent message : ${messageText} from ${clientId}`);
 }
 
 // Function to receive msgs
@@ -130,6 +132,8 @@ function receiveMessage(member,msg){
   receivedMessage.innerText = msg;
   receivedMessage.classList.add("received-message");
   chatHistory.appendChild(receivedMessage);
+
+  console.log(`${member} : ${msg}`);
 }
 
 // Function to default msg
@@ -138,5 +142,7 @@ function defaultMessage(clientId,action){
   systemMessage.innerText = `${clientId} ${action}`;
   systemMessage.classList.add("system-message");
   chatHistory.appendChild(systemMessage);
+
+  console.log(`${clientId} ${action}`);
 }
 
