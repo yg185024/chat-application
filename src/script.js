@@ -109,8 +109,7 @@ function sendMessage() {
   }
   const owner = document.createElement("p");
   owner.innerText = clientId;
-  owner.classList.add("owner-name");
-  owner.classList.add("sent-message");
+  owner.classList.add("sender-name");
   chatHistory.appendChild(owner);
 
   const sentMessage = document.createElement("p");
@@ -126,8 +125,7 @@ function sendMessage() {
 function receiveMessage(member,msg){
   const owner = document.createElement("p");
   owner.innerText = member;
-  owner.classList.add("owner-name");
-  owner.classList.add("received-message");
+  owner.classList.add("receiver-name");
   chatHistory.appendChild(owner);
 
   const receivedMessage = document.createElement("p");
