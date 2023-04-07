@@ -92,3 +92,14 @@ body {
   border-color: white;
   cursor:pointer;
 }
+
+
+.connect-connected{
+  background-color: #2196f3;
+  border:solid;
+  border-width: 2px;
+  border-color: white;
+  width: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+}
