@@ -52,7 +52,7 @@ function connectAndDisconnect(){
 // Creating Client and connecting...
 function createClient(){
     clientId = "client" + Math.random().toString(36).substring(5);
-    const hostURL = `http://${host}:${port}`;
+    const hostURL = 'ws://broker.emqx.io:8083/mqtt';
 
     client = mqtt.connect(hostURL,{protocolVersion:5});
 
@@ -78,25 +78,28 @@ function unsubscribe(){
 }
 
 // Listining for messages
-client.on('message', (topic, message) => {
-  console.log(message.toString());
-  const parts = message.toString().split(':');
-  const action = parts[0];
-  const member = parts[1];
-  const msg = parts.slice(2).join(':');           // extract the message conten
+if( connect != false ){
+  client.on('message', (topic, message) => {
+    console.log(message.toString());
+    const parts = message.toString().split(':');
+    const action = parts[0];
+    const member = parts[1];
+    const msg = parts.slice(2).join(':');           // extract the message conten
+  
+    if (action === 'JOIN') {
+      console.log(`${member} ${defaultTextSubscribe}`);
+      defaultMessage(member,action);
+    } else if (action === 'LEAVE') {
+      console.log(`${member} ${defaultTextUnsubscribe}`);
+      defaultMessage(member,action);
+    } else {
+      console.log(`${member}: ${msg}`);
+      receiveMessage(member,msg);
+    }
+  
+  });
+}
 
-  if (action === 'JOIN') {
-    console.log(`${member} ${defaultTextSubscribe}`);
-    defaultMessage(member,action);
-  } else if (action === 'LEAVE') {
-    console.log(`${member} ${defaultTextUnsubscribe}`);
-    defaultMessage(member,action);
-  } else {
-    console.log(`${member}: ${msg}`);
-    receiveMessage(member,msg);
-  }
-
-});
 
 // Function to send a message
 function sendMessage() {
