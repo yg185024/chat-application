@@ -51,7 +51,7 @@ function connectAndDisconnect(){
 
 // Creating Client and connecting...
 function createClient(){
-    const clientId = `client-${Math.random().toString(36).substring(2, 5)}`;
+    clientId = `client-${Math.random().toString(36).substring(2, 5)}`;
     const hostURL = 'ws://broker.emqx.io:8083/mqtt';
 
     client = mqtt.connect(hostURL,{protocolVersion:5});
