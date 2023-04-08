@@ -6,7 +6,7 @@ const chatHistory = document.querySelector(".chat-history");
 const connectButton = document.querySelector(".connect-button");
 
 // MQTT details
-const mqtt = require('mqtt');
+// const mqtt = require('mqtt');
 const host = "127.0.0.1";
 const port = "1883";
 const topic = "chat001"
