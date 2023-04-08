@@ -1,4 +1,3 @@
-
 // Get elements from the DOM
 const messageInput = document.getElementById("message-input");
 const sendButton = document.getElementById("send-button");
@@ -12,7 +11,7 @@ const port = "1883";
 const topic = "chat001"
 let client;
 let clientId;
-
+let windowClient = "";
 
 // Default Text and Value;
 const defaultTextSubscribe = "has joined the chat" ;
@@ -109,10 +108,14 @@ function sendMessage() {
   if (messageText === "" || connect == false) {
     return;
   }
-  const owner = document.createElement("p");
-  owner.innerText = clientId;
-  owner.classList.add("sender-name");
-  chatHistory.appendChild(owner);
+
+  if( windowClient !== clientId){
+    const owner = document.createElement("p");
+    owner.innerText = clientId;
+    owner.classList.add("sender-name");
+    chatHistory.appendChild(owner);
+    windowClient = clientId;
+  }
 
   const sentMessage = document.createElement("p");
   sentMessage.innerText = messageText;
@@ -125,11 +128,14 @@ function sendMessage() {
 
 // Function to receive msgs
 function receiveMessage(member,msg){
-  const owner = document.createElement("p");
-  owner.innerText = member;
-  owner.classList.add("receiver-name");
-  chatHistory.appendChild(owner);
-
+  if( windowClient !== member){
+    const owner = document.createElement("p");
+    owner.innerText = member;
+    owner.classList.add("receiver-name");
+    chatHistory.appendChild(owner);
+    windowClient = member;
+  }
+  
   const receivedMessage = document.createElement("p");
   receivedMessage.innerText = msg;
   receivedMessage.classList.add("received-message");
@@ -140,6 +146,7 @@ function receiveMessage(member,msg){
 
 // Function to default msg
 function defaultMessage(clientId,action){
+  windowClient = "";
   const systemMessage = document.createElement('div');
   if( clientId == 0 ){
     systemMessage.innerText = `${action}`;
