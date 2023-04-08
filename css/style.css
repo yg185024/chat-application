@@ -130,8 +130,16 @@ body {
 }
 
 /* Style for sender name */
-.sender-name .receiver-name{
+.sender-name {
   align-self: flex-end;
+  font-size: 12px;
+  font-weight: bold;
+  color: #4A4A4A;
+  margin: 0 0 5px 0;
+}
+
+.receiver-name{
+  align-self: flex-start;
   font-size: 12px;
   font-weight: bold;
   color: #4A4A4A;
