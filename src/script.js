@@ -58,6 +58,7 @@ function sendMessage() {
     owner.innerText = clientId;
     owner.classList.add("sender-name");
     chatHistory.appendChild(owner);
+    chatHistory.scrollTop = chatHistory.scrollHeight; // auto-scroll to the bottom of the chat container
     changeTheValueOfWindowClient(clientId);
   }
 
@@ -65,6 +66,7 @@ function sendMessage() {
   sentMessage.innerText = messageText;
   sentMessage.classList.add("sent-message");
   chatHistory.appendChild(sentMessage);
+  chatHistory.scrollTop = chatHistory.scrollHeight;
   messageInput.value = "";
 
   publish(topic,`${clientId}:${messageText}`);
@@ -78,6 +80,7 @@ export function receiveMessage(member,msg){
     owner.innerText = member;
     owner.classList.add("receiver-name");
     chatHistory.appendChild(owner);
+    chatHistory.scrollTop = chatHistory.scrollHeight; 
     changeTheValueOfWindowClient(member);
   }
   
@@ -85,7 +88,7 @@ export function receiveMessage(member,msg){
   receivedMessage.innerText = msg;
   receivedMessage.classList.add("received-message");
   chatHistory.appendChild(receivedMessage);
-
+  chatHistory.scrollTop = chatHistory.scrollHeight;
   console.log(`${member} : ${msg}`);
 }
 
@@ -101,7 +104,7 @@ export function defaultMessage(clientId,action){
   }
   systemMessage.classList.add("system-message");
   chatHistory.appendChild(systemMessage);
-
+  chatHistory.scrollTop = chatHistory.scrollHeight;
   console.log(`${ (clientId===0?"":clientId) } ${action}`);
 }  
 
