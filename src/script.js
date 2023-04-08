@@ -76,6 +76,7 @@ function unsubscribe(){
   client.unsubscribe(topic);
   client.publish(topic,`LEAVE:${clientId}`)
   console.log(`unsubscribe to the ${topic}`);
+  defaultMessage(0,"You left the chat");
 }
 
 // Listining for messages
