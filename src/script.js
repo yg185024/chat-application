@@ -106,7 +106,11 @@ if( connect != false ){
 // Function to send a message
 function sendMessage() {
   const messageText = messageInput.value;
-  if (messageText === "" || connect == false) {
+  if( connect == false ){
+    alert("You are not connected");
+    return;
+  }
+  if ( messageText === "" ) {
     return;
   }
 
