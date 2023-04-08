@@ -68,6 +68,7 @@ function subscribe(){
   client.subscribe(topic, {nl:true},() => {
     client.publish(topic,`JOIN:${clientId}`);
     console.log(`subscribe to the ${topic}`);
+    defaultMessage(0,"Welcome to the chat");
   });
 }
 
@@ -139,11 +140,16 @@ function receiveMessage(member,msg){
 
 // Function to default msg
 function defaultMessage(clientId,action){
-  const systemMessage = document.createrElement('div');
-  systemMessage.innerText = `${clientId} ${action}`;
+  const systemMessage = document.createElement('div');
+  if( clientId == 0 ){
+    systemMessage.innerText = `${action}`;
+  }
+  else{
+    systemMessage.innerText = `${clientId} ${action}`;
+  }
   systemMessage.classList.add("system-message");
   chatHistory.appendChild(systemMessage);
 
-  console.log(`${clientId} ${action}`);
+  console.log(`${ (clientId===0?"":clientId) } ${action}`);
 }
 
