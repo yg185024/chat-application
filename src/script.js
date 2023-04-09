@@ -151,7 +151,8 @@ function getCurrentTime() {
   const date = new Date();
   const hours = date.getHours();
   const minutes = date.getMinutes();
-  const formattedHours = hours < 10 ? "0" + hours : hours;
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const formattedHours = hours % 12 || 12;
   const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
-  return `${formattedHours}:${formattedMinutes}`;
+  return `${formattedHours}:${formattedMinutes} ${ampm}`;
 }
