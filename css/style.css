@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-  }
+}
   
 .chat-container {
   width: 500px;
@@ -159,4 +159,20 @@ body {
   color: gray;
   text-align: center;
   margin: 10px 0;
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 30px;
+  border: 1.5px solid #fff;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
 }
