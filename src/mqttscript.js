@@ -5,25 +5,25 @@ import {defaultTextSubscribe,defaultTextUnsubscribe,receiveMessage, defaultMessa
 // const mqtt = require('mqtt');
 const host = "127.0.0.1";
 const port = "1883";
-export const topic = "chat001"
+const topic = "chat001"
 let client;
-export let clientId;
-export let windowClient = "";
+let clientId;
+let windowClient = "";
 
 // Default Text and Value;
-export let connect = false;
+let connect = false;
 
 // Functions to change the exported attribute value;
 // modifying is not allowed since import creates a read-only binding to the exported value.
-export function changeTheValueOfConnect(val){     // Function to change the value of connect
+function changeTheValueOfConnect(val){     // Function to change the value of connect
     connect = val;
 }   
-export function changeTheValueOfWindowClient(val){  // Function to change the value of windowClient
+function changeTheValueOfWindowClient(val){  // Function to change the value of windowClient
     windowClient = val;
 }
 
 // Creating Client and connecting...
-export function createClient(){
+function createClient(){
     clientId = `client-${Math.random().toString(36).substring(2, 5)}`;
     const hostURL = 'ws://broker.emqx.io:8083/mqtt';
 
@@ -36,7 +36,7 @@ export function createClient(){
 }
 
 // Subscribing to the topic
-export function subscribe(){
+function subscribe(){
   client.subscribe(topic, {nl:true},() => {
     publish(topic,`${clientId}:JOIN`);
     console.log(`subscribe to the ${topic}`);
@@ -45,7 +45,7 @@ export function subscribe(){
 }
 
 // Unsubscribing to the topic
-export function unsubscribe(){
+function unsubscribe(){
     client.unsubscribe(topic);
     publish(topic,`${clientId}:LEAVE`)
     console.log(`unsubscribe to the ${topic}`);
@@ -53,7 +53,7 @@ export function unsubscribe(){
   }
   
 // Publishes the msg
-export function publish(topic,msg){
+function publish(topic,msg){
     client.publish(topic,msg);
 }
 
@@ -79,3 +79,5 @@ if( connect != false ){
 
     });
 }
+
+export default {topic, clientId, windowClient, connect, createClient, subscribe, unsubscribe, publish, changeTheValueOfConnect,changeTheValueOfWindowClient};

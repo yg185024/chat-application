@@ -8,8 +8,8 @@ const chatHistory = document.querySelector(".chat-history");
 const connectButton = document.querySelector(".connect-button");
 
 // Default Text and Value;
-export const defaultTextSubscribe = "has joined the chat" ;
-export const defaultTextUnsubscribe = "has left the chat";
+const defaultTextSubscribe = "has joined the chat" ;
+const defaultTextUnsubscribe = "has left the chat";
 
 
 // Event listeners
@@ -91,7 +91,7 @@ function sendMessage() {
 }
 
 // Function to receive msgs
-export function receiveMessage(member,msg){
+function receiveMessage(member,msg){
 
   // Create a div element to hold the message
   const messageDiv = document.createElement("div");
@@ -130,7 +130,7 @@ export function receiveMessage(member,msg){
 }
 
 // Function to default msg
-export function defaultMessage(clientId,action){
+function defaultMessage(clientId,action){
   changeTheValueOfWindowClient("");
   const systemMessage = document.createElement('div');
   if( clientId == 0 ){
@@ -156,3 +156,6 @@ function getCurrentTime() {
   const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
   return `${formattedHours}:${formattedMinutes} ${ampm}`;
 }
+
+
+export default {defaultTextSubscribe, defaultTextUnsubscribe, receiveMessage, defaultMessage};
